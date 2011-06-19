@@ -1,0 +1,39 @@
+jabba 
+
+Jabba helps you accomplish many tasks in a group chat setting. He can
+do an Google image search for you, check on the status of your
+servers, or even make you a cappuccino. Jabba speaks XMPP and also
+understands English, or whatever language you prefer.
+
+Example usage:
+
+jabba deploy           (causes jabba to update himself from the latest git version)
+jabba help             (displays list of available commands)
+jabba weather          (displays a five-day forecast from yr.no)
+jabba the hutt
+
+Installation instructions
+
+1. gem install jabba
+2. jabba start JID PASSWORD [--huttlets_dir=~/huttlets] [room1] [room2] [etc]
+
+This will cause Jabba to go online. If you have him in your roster, this means you'll be notified that he came online. The optional room parameters are multi-user chat sessions that jabba will attempt to join. You can also tell Jabba to join a room after he starts up. If jabba is in your room, just call him by name and he will do your bidding.
+
+
+### Signals ###
+
+* HUP: Jabba will pull from his Git repository and re-read his huttlets
+* TERM: Jabba will pull from his Git repository and restart
+
+
+### Huttlets ###
+
+In addition to Jabba's built-in commands, he can be taught to perform a wide array of tricks. These are called huttlets. When you start up Jabba, specify the directory where his huttlets are located. The default is <gemdir>/huttlets. Some huttlets are provided already. Feel free to make more, and please share them with us if you do. To submit your huttlets for addition, just fork the project and send us a pull request.
+
+Huttlets follow the Unix STDIN/STDOUT convention. And system command can be made into a huttlet. Just create a symbolic link to it in your huttlet directory. Huttlets should also respond to a usage command, which should print out help explaining how to use the huttlet.
+
+To get started writing your own huttlet, use the huttlet generator:
+
+$ jabba generate huttlet my_special_huttlet
+
+This generates a sample script and a test template for it.
